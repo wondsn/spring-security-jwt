@@ -1,5 +1,6 @@
 package hello.wondsn.springsecurityjwt.config;
 
+import hello.wondsn.springsecurityjwt.config.jwt.JwtAuthenticationFilter;
 import hello.wondsn.springsecurityjwt.filter.MyFilter1;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilter(corsFilter())    // @CrossOrigin(인증x), 시큐리티 필터에 등록 인증(O)
                 .formLogin().disable()
+                .addFilter(new JwtAuthenticationFilter(authenticationManager()))   // AuthenticationManager
                 .httpBasic().disable()      // headers 내 Authorization 키값에 ID/PW 담아서 보내는 걸 금지
                 .authorizeRequests()
                 .antMatchers("/api/v1/user/**").access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
