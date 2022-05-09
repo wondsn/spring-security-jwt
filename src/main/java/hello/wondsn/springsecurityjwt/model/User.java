@@ -1,7 +1,7 @@
 package hello.wondsn.springsecurityjwt.model;
 
 import lombok.AccessLevel;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Entity
-@Getter
+@Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class User {
 
